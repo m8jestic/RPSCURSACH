@@ -25,18 +25,20 @@ namespace RPSCURSACH
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-
+        { 
+            DialogResult dialogResult = new ConnectionForm().ShowDialog();
         }
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Программу создал студент группы 741-1 Ёрхов Матвей Вадимович", "ТУСУР ЧЕМПИОН");
+            MessageBox.Show("Программу создал студент группы 741-1 Ёрхов Матвей Вадимович\nФБ Факультет Баскетбола", "ТУСУР ЧЕМПИОН");
         }
 
         private void Statistics_Button_Click(object sender, EventArgs e)
         {
+            this.Hide();
             DialogResult dialogResult = new StatisticsForm().ShowDialog();
+            this.Show();
         }
     }
 }

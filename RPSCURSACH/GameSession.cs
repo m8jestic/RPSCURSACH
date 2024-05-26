@@ -85,9 +85,10 @@ namespace RPSCURSACH
 
         private void countDownTimerEvent(object sender, EventArgs e)
         {
+
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
-
+            ChoosenSignRight.Image = null;
             if (timerRound < 1)
             {
                 getRandomNumber();
@@ -117,6 +118,7 @@ namespace RPSCURSACH
                 Count_Left.Text = scoreLeft.ToString();
                 Count_Right.Text = scoreRight.ToString();
                 CheckGame();
+                countDownTimer.Enabled = false;
                 ChoosenSignLeft.Image = null;
                 RockButton.Enabled = true;
                 pictureBox2.Enabled = true;
