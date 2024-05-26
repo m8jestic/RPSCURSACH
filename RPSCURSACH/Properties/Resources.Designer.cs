@@ -63,6 +63,26 @@ namespace RPSCURSACH.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gKnhoBc6vRs {
+            get {
+                object obj = ResourceManager.GetObject("gKnhoBc6vRs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap h3tid5Ou6gU {
+            get {
+                object obj = ResourceManager.GetObject("h3tid5Ou6gU", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paper {
             get {
                 object obj = ResourceManager.GetObject("Paper", resourceCulture);
@@ -86,6 +106,16 @@ namespace RPSCURSACH.Properties {
         internal static System.Drawing.Bitmap Scissors {
             get {
                 object obj = ResourceManager.GetObject("Scissors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Без_названия__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Без названия (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

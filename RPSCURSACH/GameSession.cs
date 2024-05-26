@@ -87,14 +87,11 @@ namespace RPSCURSACH
         {
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
-            Count_Left.Text = scoreLeft.ToString();
-            Count_Right.Text = scoreRight.ToString();
 
             if (timerRound < 1)
             {
                 getRandomNumber();
                 countDownTimer.Enabled = false;
-                timerRound = 5;
                 if (compChoice == "")
                 {
                     scoreLeft += 1;
@@ -115,37 +112,22 @@ namespace RPSCURSACH
                         scoreLeft += 1;
                     }
                 }
-                CheckGame();
+                countRound += 1;
                 LabelRoundCount.Text = countRound.ToString();
-                countDownTimer.Enabled = true;
+                Count_Left.Text = scoreLeft.ToString();
+                Count_Right.Text = scoreRight.ToString();
+                CheckGame();
                 ChoosenSignLeft.Image = null;
                 RockButton.Enabled = true;
                 pictureBox2.Enabled = true;
                 pictureBox3.Enabled = true;
+                countDownTimer.Enabled = true;
+                timerRound = 5;
             }
         }
         public void CheckGame()
         {
-
-            if (countRound < 6)
-            {
-                countRound += 1;
-            }
-            else if(scoreLeft == 3 & scoreRight < 3 | scoreLeft < 3 & scoreRight == 3) 
-            {
-                if (scoreLeft > scoreRight)
-                {
-                    MessageBox.Show($"Игра окончена, вы победили со счетом {scoreLeft}:{scoreRight}");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show($"Игра окончена, вы проиграли со счетом {scoreLeft}:{scoreRight}");
-                    this.Close();
-                }
-
-            }
-            else
+            if(scoreLeft == 3 | scoreRight == 3) 
             {
                 if (scoreLeft > scoreRight)
                 {

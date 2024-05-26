@@ -35,13 +35,13 @@
             this.Count_Right = new System.Windows.Forms.Label();
             this.LabelNotImportant = new System.Windows.Forms.Label();
             this.LabelRoundCount = new System.Windows.Forms.Label();
+            this.countDownTimer = new System.Windows.Forms.Timer(this.components);
+            this.countDownLabel = new System.Windows.Forms.Label();
             this.ChoosenSignRight = new System.Windows.Forms.PictureBox();
             this.ChoosenSignLeft = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.RockButton = new System.Windows.Forms.PictureBox();
-            this.countDownTimer = new System.Windows.Forms.Timer(this.components);
-            this.countDownLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ChoosenSignRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChoosenSignLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -99,6 +99,21 @@
             this.LabelRoundCount.TabIndex = 10;
             this.LabelRoundCount.Text = "1";
             // 
+            // countDownTimer
+            // 
+            this.countDownTimer.Interval = 1000;
+            this.countDownTimer.Tick += new System.EventHandler(this.countDownTimerEvent);
+            // 
+            // countDownLabel
+            // 
+            this.countDownLabel.AutoSize = true;
+            this.countDownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countDownLabel.Location = new System.Drawing.Point(455, 29);
+            this.countDownLabel.Name = "countDownLabel";
+            this.countDownLabel.Size = new System.Drawing.Size(26, 29);
+            this.countDownLabel.TabIndex = 11;
+            this.countDownLabel.Text = "5";
+            // 
             // ChoosenSignRight
             // 
             this.ChoosenSignRight.Location = new System.Drawing.Point(843, 153);
@@ -152,25 +167,12 @@
             this.RockButton.TabStop = false;
             this.RockButton.Click += new System.EventHandler(this.RockButton_Click);
             // 
-            // countDownTimer
-            // 
-            this.countDownTimer.Interval = 1000;
-            this.countDownTimer.Tick += new System.EventHandler(this.countDownTimerEvent);
-            // 
-            // countDownLabel
-            // 
-            this.countDownLabel.AutoSize = true;
-            this.countDownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countDownLabel.Location = new System.Drawing.Point(455, 29);
-            this.countDownLabel.Name = "countDownLabel";
-            this.countDownLabel.Size = new System.Drawing.Size(26, 29);
-            this.countDownLabel.TabIndex = 11;
-            this.countDownLabel.Text = "5";
-            // 
             // GameSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::RPSCURSACH.Properties.Resources.gKnhoBc6vRs;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(992, 504);
             this.Controls.Add(this.countDownLabel);
             this.Controls.Add(this.LabelRoundCount);

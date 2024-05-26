@@ -31,6 +31,7 @@
             this.SingleplayerButton = new System.Windows.Forms.Button();
             this.LANButton = new System.Windows.Forms.Button();
             this.Statistics_Button = new System.Windows.Forms.Button();
+            this.infoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SingleplayerButton
@@ -61,12 +62,26 @@
             this.Statistics_Button.TabIndex = 2;
             this.Statistics_Button.Text = "Статистика";
             this.Statistics_Button.UseVisualStyleBackColor = true;
+            this.Statistics_Button.Click += new System.EventHandler(this.Statistics_Button_Click);
+            // 
+            // infoButton
+            // 
+            this.infoButton.Location = new System.Drawing.Point(713, 12);
+            this.infoButton.Name = "infoButton";
+            this.infoButton.Size = new System.Drawing.Size(75, 23);
+            this.infoButton.TabIndex = 3;
+            this.infoButton.Text = "Инфо";
+            this.infoButton.UseVisualStyleBackColor = true;
+            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::RPSCURSACH.Properties.Resources.Без_названия__1_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.infoButton);
             this.Controls.Add(this.Statistics_Button);
             this.Controls.Add(this.LANButton);
             this.Controls.Add(this.SingleplayerButton);
@@ -81,6 +96,7 @@
         private System.Windows.Forms.Button SingleplayerButton;
         private System.Windows.Forms.Button LANButton;
         private System.Windows.Forms.Button Statistics_Button;
+        private System.Windows.Forms.Button infoButton;
     }
 }
 
