@@ -26,7 +26,9 @@ namespace RPSCURSACH
 
         private void button2_Click(object sender, EventArgs e)
         { 
+
             DialogResult dialogResult = new ConnectionForm().ShowDialog();
+
         }
 
         private void infoButton_Click(object sender, EventArgs e)
@@ -38,7 +40,7 @@ namespace RPSCURSACH
         {
             this.Hide();
             DialogResult dialogResult = new StatisticsForm().ShowDialog();
-            this.Show();
+            this.Close();
         }
     }
 }

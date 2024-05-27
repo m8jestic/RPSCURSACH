@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.OKIP_Button = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.IPTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.HostButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -42,13 +42,14 @@
             this.OKIP_Button.TabIndex = 0;
             this.OKIP_Button.Text = "OK";
             this.OKIP_Button.UseVisualStyleBackColor = true;
+            this.OKIP_Button.Click += new System.EventHandler(this.OKIP_Button_Click);
             // 
-            // textBox1
+            // IPTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(204, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 1;
+            this.IPTextBox.Location = new System.Drawing.Point(204, 69);
+            this.IPTextBox.Name = "IPTextBox";
+            this.IPTextBox.Size = new System.Drawing.Size(174, 20);
+            this.IPTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -67,6 +68,7 @@
             this.HostButton.TabIndex = 3;
             this.HostButton.Text = "Хост";
             this.HostButton.UseVisualStyleBackColor = true;
+            this.HostButton.Click += new System.EventHandler(this.HostButton_Click);
             // 
             // ConnectionForm
             // 
@@ -75,7 +77,7 @@
             this.ClientSize = new System.Drawing.Size(586, 168);
             this.Controls.Add(this.HostButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.IPTextBox);
             this.Controls.Add(this.OKIP_Button);
             this.Name = "ConnectionForm";
             this.Text = "ConnectionForm";
@@ -87,7 +89,7 @@
         #endregion
 
         private System.Windows.Forms.Button OKIP_Button;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox IPTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button HostButton;
     }

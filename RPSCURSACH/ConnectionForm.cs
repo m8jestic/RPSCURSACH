@@ -16,5 +16,27 @@ namespace RPSCURSACH
         {
             InitializeComponent();
         }
+
+        private void OKIP_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MultiplayerGameSession mgs = new MultiplayerGameSession(false, IPTextBox.Text);
+            if (!mgs.IsDisposed) 
+            {
+                mgs.ShowDialog();
+            }
+            this.Close();
+        }
+
+        private void HostButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MultiplayerGameSession mgs = new MultiplayerGameSession(true);
+            if(!mgs.IsDisposed)
+            {
+                mgs.ShowDialog();
+            }
+            this.Close();
+        }
     }
 }
