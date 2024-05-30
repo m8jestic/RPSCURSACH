@@ -15,7 +15,7 @@ namespace RPSCURSACH
     public partial class MultiplayerGameSession : Form
     {
         private int countRound = 1;
-        private int timerRound = 7;
+        private int timerRound = 6;
         public string playerChoice = "";
         public string enemyChoice = "";
         public Image enemySign;
@@ -24,8 +24,8 @@ namespace RPSCURSACH
         private Socket sock;
         private BackgroundWorker MessageReceiver = new BackgroundWorker();
         private TcpListener server = null;
-        private TcpClient client = null;    
-        
+        private TcpClient client = null;
+
 
         public MultiplayerGameSession(bool isHost, string ip = null)
         {
@@ -33,12 +33,16 @@ namespace RPSCURSACH
             countDownTimer.Enabled = true;
             MessageReceiver.DoWork += MessageReceiver_DoWork;
             CheckForIllegalCrossThreadCalls = false;
+ 
 
-            if(isHost) 
+
+            if (isHost) 
             {
                 server = new TcpListener(System.Net.IPAddress.Any, 5732);
                 server.Start();
                 sock = server.AcceptSocket();
+
+
             }
             else
             {
@@ -55,6 +59,7 @@ namespace RPSCURSACH
             }
         }
 
+
         private void MessageReceiver_DoWork(object sender, DoWorkEventArgs e)
         {
             if (CheckGame())
@@ -62,8 +67,7 @@ namespace RPSCURSACH
                 return;
             }
             ReceiveMove();
-            if (!client.Connected)
-                this.Close();
+
 
         }
         private void FreezeSigns()
@@ -84,7 +88,7 @@ namespace RPSCURSACH
             ChoosenSignLeft.Image = Properties.Resources.Rock;
             byte[] num = { 1 };
             sock.Send(num);
-            MessageReceiver.RunWorkerAsync();
+           // MessageReceiver.RunWorkerAsync();
 
             FreezeSigns();
         }
@@ -95,7 +99,7 @@ namespace RPSCURSACH
             ChoosenSignLeft.Image = Properties.Resources.Paper;
             byte[] num = { 2 };
             sock.Send(num);
-            MessageReceiver.RunWorkerAsync();
+           // MessageReceiver.RunWorkerAsync();
             FreezeSigns();
         }
 
@@ -105,7 +109,7 @@ namespace RPSCURSACH
             ChoosenSignLeft.Image = Properties.Resources.Scissors;
             byte[] num = { 3 };
             sock.Send(num);
-            MessageReceiver.RunWorkerAsync();
+           // MessageReceiver.RunWorkerAsync();
             FreezeSigns();
         }
 
@@ -114,8 +118,13 @@ namespace RPSCURSACH
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
             ChoosenSignRight.Image = null;
+            if(timerRound == 1)
+            {
+                MessageReceiver.RunWorkerAsync();
+            }
             if (timerRound < 1)
             {
+               
                 ChoosenSignRight.Image = enemySign;
                 countDownTimer.Enabled = false;
                 if (enemyChoice == "")
@@ -147,7 +156,7 @@ namespace RPSCURSACH
                     countDownTimer.Enabled = false;
                     UnfreezeSigns();
                     countDownTimer.Enabled = true;
-                    timerRound = 5;
+                    timerRound = 6;
                     ChoosenSignLeft.Image = null;
                 }
             }
@@ -200,7 +209,7 @@ namespace RPSCURSACH
             MessageReceiver.CancelAsync();
 
             if(server !=  null)
-                server.Stop();  
+                server.Stop();
 
         }
 

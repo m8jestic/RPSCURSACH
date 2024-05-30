@@ -85,7 +85,6 @@ namespace RPSCURSACH
 
         private void countDownTimerEvent(object sender, EventArgs e)
         {
-
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
             ChoosenSignRight.Image = null;
