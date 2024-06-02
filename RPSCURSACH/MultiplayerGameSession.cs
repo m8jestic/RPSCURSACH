@@ -25,6 +25,7 @@ namespace RPSCURSACH
         private BackgroundWorker MessageReceiver = new BackgroundWorker();
         private TcpListener server = null;
         private TcpClient client = null;
+        Database db = new Database();
 
 
         public MultiplayerGameSession(bool isHost, string ip = null)
@@ -41,7 +42,7 @@ namespace RPSCURSACH
                 server = new TcpListener(System.Net.IPAddress.Any, 5732);
                 server.Start();
                 sock = server.AcceptSocket();
-
+                
 
             }
             else
@@ -147,6 +148,8 @@ namespace RPSCURSACH
                         scoreLeft += 1;
                     }
                 }
+                playerChoice = "";
+                enemyChoice = "";
                 countRound += 1;
                 LabelRoundCount.Text = countRound.ToString();
                 Count_Left.Text = scoreLeft.ToString();
@@ -167,11 +170,15 @@ namespace RPSCURSACH
             {
                 if (scoreLeft > scoreRight)
                 {
+                    db.InsertInTheHistory(scoreLeft, scoreRight, countRound, "Победа");
+                    db.UpdateTheStatisticsWin();
                     MessageBox.Show($"Игра окончена, вы победили со счетом {scoreLeft}:{scoreRight}");
                     this.Close();
                 }
                 else
                 {
+                    db.InsertInTheHistory(scoreLeft, scoreRight, countRound, "Поражение");
+                    db.UpdateTheStatisticsLose();
                     MessageBox.Show($"Игра окончена, вы проиграли со счетом {scoreLeft}:{scoreRight}");
                     this.Close();
                 }

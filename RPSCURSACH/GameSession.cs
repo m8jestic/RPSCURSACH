@@ -18,6 +18,7 @@ namespace RPSCURSACH
         public string compChoice = "";
         public int scoreLeft = 0;
         public int scoreRight = 0;
+        Database db = new Database();
         public GameSession()
         {
             InitializeComponent();
@@ -112,6 +113,8 @@ namespace RPSCURSACH
                         scoreLeft += 1;
                     }
                 }
+                playerChoice = "";
+                compChoice = "";
                 countRound += 1;
                 LabelRoundCount.Text = countRound.ToString();
                 Count_Left.Text = scoreLeft.ToString();
@@ -132,11 +135,15 @@ namespace RPSCURSACH
             {
                 if (scoreLeft > scoreRight)
                 {
+                    db.InsertInTheHistory(scoreLeft, scoreRight, countRound, "Победа");
+                    db.UpdateTheStatisticsWin();
                     MessageBox.Show($"Игра окончена, вы победили со счетом {scoreLeft}:{scoreRight}");
                     this.Close();
                 }
                 else
                 {
+                    db.InsertInTheHistory(scoreLeft,scoreRight, countRound, "Поражение");
+                    db.UpdateTheStatisticsLose();
                     MessageBox.Show($"Игра окончена, вы проиграли со счетом {scoreLeft}:{scoreRight}");
                     this.Close();
                 }

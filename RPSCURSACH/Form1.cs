@@ -40,7 +40,7 @@ namespace RPSCURSACH
         {
             this.Hide();
             DialogResult dialogResult = new StatisticsForm().ShowDialog();
-            this.Close();
+            this.Show();
         }
     }
 }
