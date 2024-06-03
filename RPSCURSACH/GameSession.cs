@@ -89,6 +89,11 @@ namespace RPSCURSACH
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
             ChoosenSignRight.Image = null;
+            if(timerRound == 5)
+            {
+                ChoosenSignRight.Image = null;
+                ChoosenSignLeft.Image = null;
+            }
             if (timerRound < 1)
             {
                 getRandomNumber();
@@ -121,12 +126,11 @@ namespace RPSCURSACH
                 Count_Right.Text = scoreRight.ToString();
                 CheckGame();
                 countDownTimer.Enabled = false;
-                ChoosenSignLeft.Image = null;
                 RockButton.Enabled = true;
                 pictureBox2.Enabled = true;
                 pictureBox3.Enabled = true;
                 countDownTimer.Enabled = true;
-                timerRound = 5;
+                timerRound = 6;
             }
         }
         public void CheckGame()

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Sockets;
+using System.Timers;
 
 
 namespace RPSCURSACH
@@ -39,10 +40,14 @@ namespace RPSCURSACH
 
             if (isHost) 
             {
+/*                System.Timers.Timer t = new System.Timers.Timer(5000);
+                t.AutoReset = false;
+                t.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+                t.Start();*/
                 server = new TcpListener(System.Net.IPAddress.Any, 5732);
                 server.Start();
                 sock = server.AcceptSocket();
-                
+               // t.Stop();
 
             }
             else
@@ -59,7 +64,13 @@ namespace RPSCURSACH
                 }
             }
         }
-
+       /* private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            sock = null;
+            server.Stop();
+            MessageBox.Show("Превышено время ожидания соперника");
+            this.Close();
+        }*/
 
         private void MessageReceiver_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -119,7 +130,12 @@ namespace RPSCURSACH
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
             ChoosenSignRight.Image = null;
-            if(timerRound == 1)
+            if (timerRound == 5)
+            {
+                ChoosenSignRight.Image = null;
+                ChoosenSignLeft.Image = null;
+            }
+            if (timerRound == 1)
             {
                 MessageReceiver.RunWorkerAsync();
             }
