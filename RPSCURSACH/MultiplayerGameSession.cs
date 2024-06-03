@@ -40,14 +40,24 @@ namespace RPSCURSACH
 
             if (isHost) 
             {
-/*                System.Timers.Timer t = new System.Timers.Timer(5000);
+                System.Timers.Timer t = new System.Timers.Timer(20000);
                 t.AutoReset = false;
                 t.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-                t.Start();*/
+                t.Start();
                 server = new TcpListener(System.Net.IPAddress.Any, 5732);
                 server.Start();
-                sock = server.AcceptSocket();
-               // t.Stop();
+                try
+                {
+                    sock = server.AcceptSocket();
+                    t.Stop();
+                }
+                catch (SocketException ex) when (ex.ErrorCode == 10004)
+                {
+                    this.Close();
+                    t.Stop();
+                    return;
+                }
+                
 
             }
             else
@@ -64,13 +74,14 @@ namespace RPSCURSACH
                 }
             }
         }
-       /* private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
+            
             sock = null;
             server.Stop();
             MessageBox.Show("Превышено время ожидания соперника");
             this.Close();
-        }*/
+        }
 
         private void MessageReceiver_DoWork(object sender, DoWorkEventArgs e)
         {
