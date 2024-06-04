@@ -80,7 +80,7 @@
             this.Controls.Add(this.IPTextBox);
             this.Controls.Add(this.OKIP_Button);
             this.Name = "ConnectionForm";
-            this.Text = "ConnectionForm";
+            this.Text = "Соединение с оппонентом";
             this.ResumeLayout(false);
             this.PerformLayout();
 

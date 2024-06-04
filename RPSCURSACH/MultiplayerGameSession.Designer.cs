@@ -199,7 +199,7 @@
             this.Controls.Add(this.buttonPaper);
             this.Controls.Add(this.buttonRock);
             this.Name = "MultiplayerGameSession";
-            this.Text = "MultiplayerGameSession";
+            this.Text = "Игра по сети";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MultiplayerGameSession_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.buttonRock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonPaper)).EndInit();
