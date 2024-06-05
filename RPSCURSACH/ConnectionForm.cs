@@ -13,8 +13,6 @@ namespace RPSCURSACH
 {
     public partial class ConnectionForm : Form
     {
-
-
         public ConnectionForm()
         {
             InitializeComponent();
@@ -33,11 +31,6 @@ namespace RPSCURSACH
 
         private void HostButton_Click(object sender, EventArgs e)
         {
-            /*timer = new System.Timers.Timer(15000);
-            timer.Elapsed += ElapsedTime;
-            timer.AutoReset = false;
-            timer.Enabled = true;   */
-
             this.Hide();
             MultiplayerGameSession mgs = new MultiplayerGameSession(true);
                 if (!mgs.IsDisposed)
@@ -46,8 +39,6 @@ namespace RPSCURSACH
                 }
             this.Close();
         }
-
-       
     }
 }
 

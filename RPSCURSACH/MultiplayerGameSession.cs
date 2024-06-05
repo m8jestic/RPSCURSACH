@@ -16,7 +16,7 @@ namespace RPSCURSACH
     public partial class MultiplayerGameSession : Form
     {
         private int countRound = 1;
-        private int timerRound = 6;
+        private int timerRound = 7;
         public string playerChoice = "";
         public string enemyChoice = "";
         public Image enemySign;
@@ -35,9 +35,6 @@ namespace RPSCURSACH
             countDownTimer.Enabled = true;
             MessageReceiver.DoWork += MessageReceiver_DoWork;
             CheckForIllegalCrossThreadCalls = false;
- 
-
-
             if (isHost) 
             {
                 System.Timers.Timer t = new System.Timers.Timer(20000);
@@ -47,7 +44,7 @@ namespace RPSCURSACH
                 server = new TcpListener(System.Net.IPAddress.Any, 5732);
                 server.Start();
                 try
-                {
+                { 
                     sock = server.AcceptSocket();
                     t.Stop();
                 }
@@ -57,8 +54,6 @@ namespace RPSCURSACH
                     t.Stop();
                     return;
                 }
-                
-
             }
             else
             {
@@ -76,7 +71,6 @@ namespace RPSCURSACH
         }
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            
             sock = null;
             server.Stop();
             MessageBox.Show("Превышено время ожидания соперника");
@@ -90,9 +84,18 @@ namespace RPSCURSACH
                 return;
             }
             ReceiveMove();
-
-
         }
+        private bool SocketConnected(Socket s)
+        {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
+        }
+
+
         private void FreezeSigns()
         {
             buttonRock.Enabled = false;
@@ -111,8 +114,6 @@ namespace RPSCURSACH
             ChoosenSignLeft.Image = Properties.Resources.Rock;
             byte[] num = { 1 };
             sock.Send(num);
-           // MessageReceiver.RunWorkerAsync();
-
             FreezeSigns();
         }
 
@@ -140,8 +141,7 @@ namespace RPSCURSACH
         {
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
-            ChoosenSignRight.Image = null;
-            if (timerRound == 5)
+            if (timerRound == 6)
             {
                 ChoosenSignRight.Image = null;
                 ChoosenSignLeft.Image = null;
@@ -149,13 +149,32 @@ namespace RPSCURSACH
             if (timerRound == 1)
             {
                 MessageReceiver.RunWorkerAsync();
+                try
+                {
+                    if (!SocketConnected(sock))
+                    {
+                        countDownTimer.Enabled = false;
+                        MessageBox.Show("Соединение разорвано");
+                        sock.Close();
+                        server.Stop();
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return;
+                }
             }
             if (timerRound < 1)
             {
                
                 ChoosenSignRight.Image = enemySign;
                 countDownTimer.Enabled = false;
-                if (enemyChoice == "")
+                if(playerChoice == enemyChoice)
+                {
+
+                }
+               else if (enemyChoice == "")
                 {
                     scoreLeft += 1;
                 }
@@ -186,8 +205,7 @@ namespace RPSCURSACH
                     countDownTimer.Enabled = false;
                     UnfreezeSigns();
                     countDownTimer.Enabled = true;
-                    timerRound = 6;
-                    ChoosenSignLeft.Image = null;
+                    timerRound = 7;
                 }
             }
         }
@@ -200,6 +218,7 @@ namespace RPSCURSACH
                     db.InsertInTheHistory(scoreLeft, scoreRight, countRound, "Победа");
                     db.UpdateTheStatisticsWin();
                     MessageBox.Show($"Игра окончена, вы победили со счетом {scoreLeft}:{scoreRight}");
+                    sock.Close();
                     this.Close();
                 }
                 else
@@ -207,6 +226,7 @@ namespace RPSCURSACH
                     db.InsertInTheHistory(scoreLeft, scoreRight, countRound, "Поражение");
                     db.UpdateTheStatisticsLose();
                     MessageBox.Show($"Игра окончена, вы проиграли со счетом {scoreLeft}:{scoreRight}");
+                    sock.Close ();
                     this.Close();
                 }
                 return true;
@@ -233,17 +253,21 @@ namespace RPSCURSACH
                 enemyChoice = "Scissors";
                 enemySign = Properties.Resources.Scissors;
             }
-               
+            else if (buffer[0] == 4)
+            {
+                enemyChoice = "";
+                enemySign = ChoosenSignRight.Image;
+            }
 
         }
 
         private void MultiplayerGameSession_FormClosing(object sender, FormClosingEventArgs e)
         {
+            countDownTimer.Enabled = false;
             MessageReceiver.WorkerSupportsCancellation = true;
             MessageReceiver.CancelAsync();
+            sock.Close();
 
-            if(server !=  null)
-                server.Stop();
 
         }
 
