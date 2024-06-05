@@ -95,7 +95,6 @@ namespace RPSCURSACH
         {
             timerRound -= 1;
             countDownLabel.Text = timerRound.ToString();
-            ChoosenSignRight.Image = null;
             if(timerRound == 5)
             {
                 ChoosenSignRight.Image = null;
