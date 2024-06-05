@@ -10,19 +10,29 @@ using System.Windows.Forms;
 namespace RPSCURSACH
 {
     public class Database
-    {
-        //SqlConnection sqlconn = new SqlConnection(@"Data Source=MATVEYPC; Initial Catalog=RPS_Game; Integrated Security = True;");
-        //SqlConnection sqlconn = new SqlConnection(@"Data Source=(LocalDB)\v11.0;" + "Atta" "Integrated Security = True;");
-        SqlConnection sqlconn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;" + "AttachDbFilename=" + AppDomain.CurrentDomain.BaseDirectory + "RPS_Game.mdf;" + "Integrated Security = True; User ID=chungachanga ;pwd=12345");
+    { 
+        SqlConnection sqlconn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;" + "AttachDbFilename=" + AppDomain.CurrentDomain.BaseDirectory + "RPS_Game.mdf;" + "Integrated Security = True;");
 
         public void OpenConnection()
         {
             if(sqlconn.State == System.Data.ConnectionState.Closed) 
             {
                 sqlconn.Open();
-
             }
         }
+        public void CloseConnection()
+        {
+            if (sqlconn.State == System.Data.ConnectionState.Open)
+            {
+                sqlconn.Close();
+            }
+        }
+
+        public SqlConnection GetConnection()
+        {
+            return sqlconn;
+        }
+
         public List<int> GetStatisticsData()
         {
             List<int> statistics = new List<int>();
@@ -42,7 +52,6 @@ namespace RPSCURSACH
                 }
             }
             return statistics;
-
         }
         public void UpdateTheStatisticsWin()
         {
@@ -83,18 +92,7 @@ namespace RPSCURSACH
       
             
         }
-        public void CloseConnection()
-        {
-            if(sqlconn.State == System.Data.ConnectionState.Open)
-            {
-                sqlconn.Close();    
-            }
-        }
 
-        public SqlConnection GetConnection()
-        {
-            return sqlconn; 
-        }
 
         
     }
