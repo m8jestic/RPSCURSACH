@@ -122,6 +122,7 @@
             this.ChoosenSignRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ChoosenSignRight.TabIndex = 4;
             this.ChoosenSignRight.TabStop = false;
+            this.ChoosenSignRight.Visible = false;
             // 
             // ChoosenSignLeft
             // 
@@ -131,6 +132,7 @@
             this.ChoosenSignLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ChoosenSignLeft.TabIndex = 3;
             this.ChoosenSignLeft.TabStop = false;
+            this.ChoosenSignLeft.Visible = false;
             // 
             // pictureBox3
             // 

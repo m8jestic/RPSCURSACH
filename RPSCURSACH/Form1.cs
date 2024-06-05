@@ -33,7 +33,7 @@ namespace RPSCURSACH
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Программу создал студент группы 741-1 Ёрхов Матвей Вадимович\nФБ Факультет Баскетбола", "ТУСУР ЧЕМПИОН");
+            MessageBox.Show("Программу создал студент группы 741-1 Ёрхов Матвей Вадимович\nФБ", "ТУСУР ЧЕМПИОН");
         }
 
         private void Statistics_Button_Click(object sender, EventArgs e)

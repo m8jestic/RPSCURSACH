@@ -63,6 +63,16 @@ namespace RPSCURSACH.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _7be96c37c10b95e3233187850f1f11d9 {
+            get {
+                object obj = ResourceManager.GetObject("7be96c37c10b95e3233187850f1f11d9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gKnhoBc6vRs {
             get {
                 object obj = ResourceManager.GetObject("gKnhoBc6vRs", resourceCulture);
@@ -76,6 +86,16 @@ namespace RPSCURSACH.Properties {
         internal static System.Drawing.Bitmap h3tid5Ou6gU {
             get {
                 object obj = ResourceManager.GetObject("h3tid5Ou6gU", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nip_EpYCM1I {
+            get {
+                object obj = ResourceManager.GetObject("nip_EpYCM1I", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

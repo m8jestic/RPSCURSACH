@@ -18,12 +18,13 @@ namespace RPSCURSACH
         public string compChoice = "";
         public int scoreLeft = 0;
         public int scoreRight = 0;
+        
         Database db = new Database();
         public GameSession()
         {
             InitializeComponent();
             countDownTimer.Enabled = true;
-            
+           
         }
 
        
@@ -42,16 +43,19 @@ namespace RPSCURSACH
             {
                 compChoice = "Rock";
                 ChoosenSignRight.Image = Properties.Resources.Rock;
+                ChoosenSignRight.Visible = true;
             }
             else if( randomNumber == 2) 
             {
                 compChoice = "Paper";
                 ChoosenSignRight.Image = Properties.Resources.Paper;
+                ChoosenSignRight.Visible = true;
             }
             else if (randomNumber == 3) 
             {
                 compChoice = "Scissors";
                 ChoosenSignRight.Image = Properties.Resources.Scissors;
+                ChoosenSignRight.Visible = true;
             }
         }
 
@@ -60,16 +64,18 @@ namespace RPSCURSACH
         {
             playerChoice = "Rock";
             ChoosenSignLeft.Image = Properties.Resources.Rock;
+            ChoosenSignLeft.Visible = true;
             RockButton.Enabled = false;
             pictureBox2.Enabled = false;
             pictureBox3.Enabled = false;
-           
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             playerChoice = "Paper";
             ChoosenSignLeft.Image = Properties.Resources.Paper;
+            ChoosenSignLeft.Visible = true;
             RockButton.Enabled = false;
             pictureBox2.Enabled = false;
             pictureBox3.Enabled = false;
@@ -79,6 +85,7 @@ namespace RPSCURSACH
         {
             playerChoice = "Scissors";
             ChoosenSignLeft.Image = Properties.Resources.Scissors;
+            ChoosenSignLeft.Visible = true;
             RockButton.Enabled = false;
             pictureBox2.Enabled = false;
             pictureBox3.Enabled = false;
@@ -93,6 +100,8 @@ namespace RPSCURSACH
             {
                 ChoosenSignRight.Image = null;
                 ChoosenSignLeft.Image = null;
+                ChoosenSignLeft.Visible = false;
+                ChoosenSignRight.Visible = false;
             }
             if (timerRound < 1)
             {

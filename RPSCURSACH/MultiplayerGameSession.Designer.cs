@@ -35,10 +35,8 @@
             this.ChoosenSignLeft = new System.Windows.Forms.PictureBox();
             this.ChoosenSignRight = new System.Windows.Forms.PictureBox();
             this.countDownTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.countDownLabel = new System.Windows.Forms.Label();
             this.Count_Left = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.LabelRoundCount = new System.Windows.Forms.Label();
@@ -106,18 +104,11 @@
             this.countDownTimer.Interval = 1000;
             this.countDownTimer.Tick += new System.EventHandler(this.countDownTimerEvent);
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 0;
-            // 
             // countDownLabel
             // 
             this.countDownLabel.AutoSize = true;
             this.countDownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countDownLabel.Location = new System.Drawing.Point(433, 30);
+            this.countDownLabel.Location = new System.Drawing.Point(426, 38);
             this.countDownLabel.Name = "countDownLabel";
             this.countDownLabel.Size = new System.Drawing.Size(26, 29);
             this.countDownLabel.TabIndex = 5;
@@ -132,13 +123,6 @@
             this.Count_Left.Size = new System.Drawing.Size(26, 29);
             this.Count_Left.TabIndex = 6;
             this.Count_Left.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 11;
             // 
             // label4
             // 
@@ -184,15 +168,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::RPSCURSACH.Properties.Resources._7be96c37c10b95e3233187850f1f11d9;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(907, 492);
             this.Controls.Add(this.Count_Right);
             this.Controls.Add(this.LabelRoundCount);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.Count_Left);
             this.Controls.Add(this.countDownLabel);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.ChoosenSignRight);
             this.Controls.Add(this.ChoosenSignLeft);
             this.Controls.Add(this.buttonScissors);
@@ -219,10 +203,8 @@
         private System.Windows.Forms.PictureBox ChoosenSignLeft;
         private System.Windows.Forms.PictureBox ChoosenSignRight;
         private System.Windows.Forms.Timer countDownTimer;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label countDownLabel;
         private System.Windows.Forms.Label Count_Left;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label LabelRoundCount;

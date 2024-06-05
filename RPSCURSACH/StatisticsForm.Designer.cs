@@ -124,6 +124,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::RPSCURSACH.Properties.Resources.nip_EpYCM1I;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(838, 481);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
