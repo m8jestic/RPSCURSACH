@@ -13,7 +13,7 @@ namespace RPSCURSACH
     {
         //SqlConnection sqlconn = new SqlConnection(@"Data Source=MATVEYPC; Initial Catalog=RPS_Game; Integrated Security = True;");
         //SqlConnection sqlconn = new SqlConnection(@"Data Source=(LocalDB)\v11.0;" + "Atta" "Integrated Security = True;");
-        SqlConnection sqlconn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;" + "AttachDbFilename=" + AppDomain.CurrentDomain.BaseDirectory + "RPS_Game.mdf;" + "Integrated Security = True;");
+        SqlConnection sqlconn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;" + "AttachDbFilename=" + AppDomain.CurrentDomain.BaseDirectory + "RPS_Game.mdf;" + "Integrated Security = True; User ID=chungachanga ;pwd=12345");
 
         public void OpenConnection()
         {

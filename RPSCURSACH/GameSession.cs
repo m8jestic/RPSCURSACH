@@ -102,6 +102,9 @@ namespace RPSCURSACH
                 ChoosenSignLeft.Image = null;
                 ChoosenSignLeft.Visible = false;
                 ChoosenSignRight.Visible = false;
+                RockButton.Enabled = true;
+                pictureBox2.Enabled = true;
+                pictureBox3.Enabled = true;
             }
             if (timerRound < 1)
             {
@@ -133,16 +136,15 @@ namespace RPSCURSACH
                 LabelRoundCount.Text = countRound.ToString();
                 Count_Left.Text = scoreLeft.ToString();
                 Count_Right.Text = scoreRight.ToString();
-                CheckGame();
                 countDownTimer.Enabled = false;
-                RockButton.Enabled = true;
-                pictureBox2.Enabled = true;
-                pictureBox3.Enabled = true;
-                countDownTimer.Enabled = true;
-                timerRound = 6;
+                if (!CheckGame()) 
+                {
+                    countDownTimer.Enabled = true;
+                    timerRound = 6;
+                }
             }
         }
-        public void CheckGame()
+        public bool CheckGame()
         {
             if(scoreLeft == 3 | scoreRight == 3) 
             {
@@ -160,8 +162,9 @@ namespace RPSCURSACH
                     MessageBox.Show($"Игра окончена, вы проиграли со счетом {scoreLeft}:{scoreRight}");
                     this.Close();
                 }
-
+                return true;
             }
+            return false;
         }
     }
 }
