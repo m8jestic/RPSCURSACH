@@ -27,11 +27,13 @@ namespace RPSCURSACH
         private TcpListener server = null;
         private TcpClient client = null;
         Database db = new Database();
+        bool ishost;
 
 
         public MultiplayerGameSession(bool isHost, string ip = null)
         {
             InitializeComponent();
+            ishost = isHost;
             countDownTimer.Enabled = true;
             MessageReceiver.DoWork += MessageReceiver_DoWork;
             CheckForIllegalCrossThreadCalls = false;
@@ -156,7 +158,14 @@ namespace RPSCURSACH
                         countDownTimer.Enabled = false;
                         MessageBox.Show("Соединение разорвано");
                         sock.Close();
-                        server.Stop();
+                        if (ishost)
+                        {
+                            server.Stop();
+                        }
+                        else
+                        {
+                            client.Close();
+                        }
                         this.Close();
                     }
                 }
@@ -265,6 +274,14 @@ namespace RPSCURSACH
         {
             countDownTimer.Enabled = false;
             MessageReceiver.WorkerSupportsCancellation = true;
+            if (ishost)
+            {
+                server.Stop();
+            }
+            else
+            {
+                client.Close();
+            }
             MessageReceiver.CancelAsync();
             sock.Close();
 
