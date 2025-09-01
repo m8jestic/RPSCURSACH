@@ -92,6 +92,10 @@ namespace RPSCURSACH
       
             
         }
+        public void Registration()
+        {
+
+        }
 
 
         
