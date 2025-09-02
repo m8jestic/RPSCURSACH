@@ -12,6 +12,7 @@ namespace RPSCURSACH
 {
     public partial class RegisterForm : Form
     {
+        Database database = new Database();
         public RegisterForm()
         {
             InitializeComponent();
@@ -28,11 +29,17 @@ namespace RPSCURSACH
             {
                 if (textBox_Password.Text == textBox_Password_Again.Text)
                 {
-                    this.Close();
+                    if (database.Registration(textBox_Name.Text, textBox_Password.Text) == true)
+                    {
+                        this.Hide();
+                        DialogResult dialogResult = new AuthForm().ShowDialog();
+                        this.Close();
+                    }
+                        
                 }
-               
             }
-            
+
         }
+
     }
 }

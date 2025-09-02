@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.button_Ok_Auth = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_Login = new System.Windows.Forms.TextBox();
+            this.textBox_Password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,20 +47,20 @@
             this.button_Ok_Auth.UseVisualStyleBackColor = true;
             this.button_Ok_Auth.Click += new System.EventHandler(this.button_Ok_Auth_Click);
             // 
-            // textBox1
+            // textBox_Login
             // 
-            this.textBox1.Location = new System.Drawing.Point(176, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBox_Login.Location = new System.Drawing.Point(176, 64);
+            this.textBox_Login.Name = "textBox_Login";
+            this.textBox_Login.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Login.TabIndex = 1;
             // 
-            // textBox2
+            // textBox_Password
             // 
-            this.textBox2.Location = new System.Drawing.Point(176, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.textBox_Password.Location = new System.Drawing.Point(176, 100);
+            this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Password.TabIndex = 2;
+            this.textBox_Password.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -108,8 +108,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_Password);
+            this.Controls.Add(this.textBox_Login);
             this.Controls.Add(this.button_Ok_Auth);
             this.Name = "AuthForm";
             this.Text = "Вход";
@@ -121,8 +121,8 @@
         #endregion
 
         private System.Windows.Forms.Button button_Ok_Auth;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_Login;
+        private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

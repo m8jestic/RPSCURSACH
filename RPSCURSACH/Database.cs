@@ -92,9 +92,40 @@ namespace RPSCURSACH
       
             
         }
-        public void Registration()
-        {
 
+        public bool Authorisation(string username, string password)
+        {
+                string query = $"SELECT * FROM Users WHERE login = '{username}' AND password = '{password}'";
+                SqlCommand command = new SqlCommand(query, GetConnection());
+                OpenConnection();
+                var d = command.ExecuteScalar();
+                CloseConnection();
+                if (d != null)
+                {
+                    if (d.ToString() != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+                
+        }
+
+        public bool Registration(string username, string password)
+        {
+            if( Authorisation(username, password) == false ) 
+            {
+                    string query = $"INSERT INTO Users (login, password) VALUES ('{username}','{password}')";
+                    SqlCommand command = new SqlCommand(query, GetConnection());
+                OpenConnection();
+                    command.ExecuteNonQuery();
+                CloseConnection();
+                    return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
